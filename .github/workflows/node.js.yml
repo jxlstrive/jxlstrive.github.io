@@ -1,31 +1,30 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
-
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
-jobs:
-  build:
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-    steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+name: Build and Deployon: 
+  # 监听 master 分支上的 push 事件
+  push: 
+    branches:      
+      - masterjobs: 
+       build-and-deploy:   
+        runs-on: ubuntu-latest 
+        # 构建环境使用 ubuntu    
+        steps:      
+        - name: Checkout        
+        uses: actions/[email protected]          
+        with:         
+         persist-credentials: false      
+         - name: Install and Build 
+         # 下载依赖 打包项目       
+          run: |  
+            npm install    
+            npm run build    
+         - name: Deploy
+         # 将打包内容发布到 github page        
+         uses: JamesIves/[email protected] 
+         # 使用别人写好的 actions        
+         with:  # 自定义环境变量          
+         ACCESS_TOKEN: ${{ secrets.VUE_EDITOR }}
+         # VUE_EDITOR 是我的 secret 名称，需要替换成你的        
+        BRANCH: master          
+        FOLDER: dist          
+        REPOSITORY_NAME: vue-editor.github.io
+        # 这是我的 github page 仓库          
+        TARGET_FOLDER: github-actions-demo # 打包的文件将放到静态服务器 github-actions-demo 目录下
