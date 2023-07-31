@@ -3,7 +3,7 @@ name: Build and Deployon
 on:
   # 监听 master 分支上的 push 事件
   push: 
-    branches:      
+    branches: ["master"]
       - masterjobs: 
        build-and-deploy:   
         runs-on: ubuntu-latest 
