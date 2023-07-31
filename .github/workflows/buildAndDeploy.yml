@@ -1,4 +1,4 @@
-name: GitHub Actions Build and Deploy Demo
+name: Build and Deploy
 on:
   push:
     branches:
@@ -10,8 +10,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
 
-      - name: Build and Deploy
-        uses: JamesIves/github-pages-deploy-action@master
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.0.0
         env:
           ACCESS_TOKEN: ${{ secrets.VUE_EDITOR }}
           BRANCH: gh-pages
