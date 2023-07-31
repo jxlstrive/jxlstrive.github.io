@@ -1,5 +1,4 @@
-# 工作流名称，不设置的话默认取配置文件名
-name: Build and Deploy
+name: Build and Deploy # 工作流名称，不设置的话默认取配置文件名
 # 指定触发 workflow 的条件
 # 指定触发事件时，可以限定分支或标签
 # 当前是 只有 master分支上触发 push 事件时才执行工作流任务
