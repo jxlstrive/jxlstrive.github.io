@@ -15,14 +15,14 @@ build-and-deploy:
 runs-on: ubuntu-latest
 # 任务执行的步骤
 steps:
-# 步骤名称
-- name: Checkout
+ # 步骤名称
  # 使用的操作 actions，可以使用公共仓库，本地仓库，别人的仓库的action
  # 拉取代码
- uses: actions/checkout@master
- - name: Build and Deploy
+  - name: Checkout
+    uses: actions/checkout@master
+  - name: Build and Deploy
  # 构建发布 Github pages
- uses: JamesIves/github-pages-deploy-action@master
+    uses: JamesIves/github-pages-deploy-action@master
  # 该步骤所需的环境变量
  env:ACCESS_TOKEN: ${{ secrets.VUE_EDITOR }}
  # 在部署前要checkout的基本分支，默认是master
