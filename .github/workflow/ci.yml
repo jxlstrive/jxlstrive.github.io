@@ -13,8 +13,9 @@ name: Build and Deployon:
          persist-credentials: false      
          - name: Install and Build 
          # 下载依赖 打包项目       
-          run:   npm install    
-          run:   npm run build    
+          run: |  
+            npm install    
+            npm run build    
          - name: Deploy
          # 将打包内容发布到 github page        
          uses: JamesIves/[email protected] 
