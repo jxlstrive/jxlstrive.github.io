@@ -5,7 +5,8 @@ name: Build and Deploy # 工作流名称，不设置的话默认取配置文件�
 
 on: 
   push:
-  branches:- master
+    branches: ["master"]
+
 # 工作流执行的一个或多个任务
 jobs:
 # 任务名称
