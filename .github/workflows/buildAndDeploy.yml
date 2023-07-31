@@ -15,5 +15,5 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.VUE_EDITOR }}
           BRANCH: master
-          FOLDER: /dist
+          FOLDER: dist
           BUILD_SCRIPT: npm install && npm run build
