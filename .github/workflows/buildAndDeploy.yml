@@ -6,12 +6,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
     steps:
       - name: Checkout
-        uses: actions/checkout@v2 # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
+        uses: actions/checkout@master # If you're using actions/checkout@v2 you must set persist-credentials to false in most cases for the deployment to work correctly.
         with:
           persist-credentials: false
       - name: Install and Build
@@ -20,8 +17,8 @@ jobs:
           npm run serve
           npm run build
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@master
         with:
-          token: ${{ secrets.VUE_EDITOR }}
+          ACCESS_TOKEN: ${{ secrets.VUE_EDITOR }}
           BRANCH: gh-pages
           FOLDER: dist
